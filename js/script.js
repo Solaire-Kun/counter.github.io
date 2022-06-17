@@ -1,48 +1,40 @@
 // Get HTML elements by ID
-const COUNTER = document.getElementById("counter");
-const LIMIT_ALERT = document.getElementById("limit-alert");
-const PLUS_BTN = document.getElementById("plus");
-const MINUS_BTN = document.getElementById("minus");
-const CLEAR_BTN = document.getElementById("clear");
+const counterElement = document.getElementById("counter");
+const limitAlert = document.getElementById("limit-alert");
+const plusBtn = document.getElementById("plus");
+const minusBtn = document.getElementById("minus");
+const clearBtn = document.getElementById("clear");
 
-// Add HTML text content for counter
-COUNTER.innerHTML = 0;
-PLUS_BTN.innerHTML = "+";
-MINUS_BTN.innerHTML = "-";
-CLEAR_BTN.innerHTML = "Clear";
+// Add HTML text content for counterElement
+counterElement.innerHTML = 0;
+plusBtn.innerHTML = "+";
+minusBtn.innerHTML = "-";
+clearBtn.innerHTML = "Clear";
 
-// Counter function
+// counterElement function
 let count = 0
-const MAX_COUNTER = 10; // Set the counter MAX limit to 10
-const MIN_COUNTER = 0;  // Set the counter MIN limit to 0
+const MAX_counterElement = 10; // Set the counterElement MAX limit to 10
+const MIN_counterElement = 0;  // Set the counterElement MIN limit to 0
 
-PLUS_BTN.addEventListener("click", () => {
-    count = Math.min(count + 1, MAX_COUNTER);
-    counter.innerHTML = count;
-    if (count === 10) {
-        COUNTER.style.color = "red";
-        LIMIT_ALERT.innerHTML = "YOU CAN'T HOLD MORE THAN 10 ITEMS IN YOUR CART";
-    } else {
-        COUNTER.style.color = "white";
-        LIMIT_ALERT.innerHTML = "";
-    }
+plusBtn.addEventListener("click", () => {
+    count = Math.min(count + 1, MAX_counterElement);
+    counterElement.innerHTML = count;
+    const isMax = (count === 10);
+    counter.style.color = isMax ? 'red' : 'white';
+    limitAlert.innerHTML = isMax ? `YOU CAN'T HOLD MORE THAN 10 ITEMS IN YOUR CART` : '';
 });
 
-MINUS_BTN.addEventListener("click", () => {
-    count = Math.max(count - 1, MIN_COUNTER);
-    counter.innerHTML = count;
-    if (count === 0) {
-        COUNTER.style.color = "red";
-        LIMIT_ALERT.innerHTML = "YOUR CART IS ALREADY EMPTY";
-    } else {
-        COUNTER.style.color = "white";
-        LIMIT_ALERT.innerHTML = "";
-    }
+minusBtn.addEventListener("click", () => {
+    count = Math.max(count - 1, MIN_counterElement);
+    counterElement.innerHTML = count;
+    const isMin = (count === 0);
+    counter.style.color = isMin ? 'red' : 'white';
+    limitAlert.innerHTML = isMin ? `YOU CAN'T HOLD MORE THAN 10 ITEMS IN YOUR CART` : '';
 });
 
-CLEAR_BTN.addEventListener("click", () => {
+clearBtn.addEventListener("click", () => {
     count = 0;
-    counter.innerHTML = count;
-    COUNTER.style.color = "white";
-    LIMIT_ALERT.innerHTML = "";
+    counterElement.innerHTML = count;
+    counterElement.style.color = "white";
+    limitAlert.innerHTML = "";
 });
